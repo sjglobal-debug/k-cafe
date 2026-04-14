@@ -10,7 +10,7 @@ export default function SellPage() {
 
   const handleSubmit = async () => {
     if (!title.trim()) {
-      alert("제목을 입력하세요.");
+      alert("에스제이 글로벌");
       return;
     }
 
