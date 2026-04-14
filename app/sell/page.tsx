@@ -1,3 +1,4 @@
+<h1 style={{color:"red"}}>🔥 내가 수정한 페이지 맞음 🔥</h1>
 "use client";
 
 import { useEffect, useState } from "react";
