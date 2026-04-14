@@ -5,10 +5,10 @@ import { db } from "../firebase";
 import {
   collection,
   addDoc,
-  serverTimestamp,
   getDocs,
   orderBy,
   query,
+  serverTimestamp,
 } from "firebase/firestore";
 
 type ProductItem = {
@@ -65,7 +65,6 @@ export default function SellPage() {
       setTitle("");
       setBrand("");
       alert("등록 완료!");
-
       await loadProducts();
     } catch (error) {
       console.error("저장 오류:", error);
@@ -98,13 +97,11 @@ export default function SellPage() {
         }}
       >
         <div style={{ marginBottom: 16 }}>
-          <label
-            style={{ display: "block", marginBottom: 8, fontWeight: 600 }}
-          >
+          <label style={{ display: "block", marginBottom: 8, fontWeight: 600 }}>
             제목
           </label>
           <input
-            placeholder="예: 중고 쇼케이스 냉장고"
+            placeholder="예: 공항 카페 장비"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             style={{
@@ -119,13 +116,11 @@ export default function SellPage() {
         </div>
 
         <div style={{ marginBottom: 20 }}>
-          <label
-            style={{ display: "block", marginBottom: 8, fontWeight: 600 }}
-          >
+          <label style={{ display: "block", marginBottom: 8, fontWeight: 600 }}>
             브랜드
           </label>
           <input
-            placeholder="예: DECAFREE / La Cimbali"
+            placeholder="예: 디카프리"
             value={brand}
             onChange={(e) => setBrand(e.target.value)}
             style={{
@@ -140,6 +135,7 @@ export default function SellPage() {
         </div>
 
         <button
+          type="button"
           onClick={handleSubmit}
           disabled={loading}
           style={{
