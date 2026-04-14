@@ -1,10 +1,35 @@
 "use client";
 
 import { useState } from "react";
+import { db } from "../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export default function SellPage() {
   const [title, setTitle] = useState("");
   const [brand, setBrand] = useState("");
+
+  const handleSubmit = async () => {
+    if (!title.trim()) {
+      alert("제목 입력하세요");
+      return;
+    }
+
+    try {
+      await addDoc(collection(db, "products"), {
+        title,
+        brand,
+        createdAt: serverTimestamp(),
+      });
+
+      alert("등록 완료!");
+
+      setTitle("");
+      setBrand("");
+    } catch (error) {
+      console.error(error);
+      alert("에러 발생");
+    }
+  };
 
   return (
     <div style={{ padding: 40 }}>
@@ -24,7 +49,7 @@ export default function SellPage() {
         style={{ display: "block", marginBottom: 10 }}
       />
 
-      <button>등록</button>
+      <button onClick={handleSubmit}>등록</button>
     </div>
   );
 }
